@@ -16,7 +16,12 @@
     <description>spring-boot-study</description>
     <modules>
         <module>spring-boot-quickstart</module>
+        <module>spring-boot-hymeleaf</module>
+        <module>spring-boot-logging</module>
+        <module>spring-boot-logging</module>
+
     </modules>
+
     <packaging>pom</packaging>
 
     <url/>

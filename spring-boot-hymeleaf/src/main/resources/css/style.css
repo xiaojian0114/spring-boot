@@ -1,0 +1,36 @@
+body{
+    font-family: Arial,sans-serif;
+    max-width:600px;
+    margin: 0 auto;
+}
+
+h1{
+    color:#333;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+li{
+    margin-bottom: 10px;
+}
+
+.completed{
+    text-decoration: line-through;
+    color:#999;
+}
+
+button{
+    background-color: #1a73e8;
+    color:white;
+    border:none;
+    padding:5px 10px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: #155ab6;
+}

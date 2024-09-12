@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.enums.RequestType;
 import org.springframework.stereotype.Service;
 
 
@@ -8,9 +9,9 @@ public class CustomerService {
     public String handleRequest(RequestType requestType) {
 
         return switch (requestType) {
-            case QUERY -> handleRequest();
-            case COMPLAINT -> handleRequest();
-            case SUGGESTION -> handleRequest();
+            case QUERY -> handleQuery();
+            case COMPLAINT -> handleComlaint();
+            case SUGGESTION -> handleSuggestion();
 
 
         };

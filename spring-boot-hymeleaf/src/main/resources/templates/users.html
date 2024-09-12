@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>用户列表</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    h1 {
+      color: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"], input[type="email"] {
+      padding: 10px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+</head>
+
+<body>
+<h1>用户列表</h1>
+<form action="/addUser" method="post">
+  <input type="text" name="name" placeholder="姓名" required>
+  <input type="email" name="email" placeholder="邮箱" required>
+  <button type="submit">添加用户</button>
+</form>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>姓名</th>
+    <th>邮箱</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="user : ${users}">
+    <td th:text="${user.id}"></td>
+    <td th:text="${user.name}"></td>
+    <td th:text="${user.email}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

@@ -9,8 +9,8 @@ import java.util.List;
 public class BookService {
     public List<BookDTO> getAllBooks(){
         return List.of(
-                new BookDTO(1l,"Java" ,"aaa",29.99),
-                new BookDTO(2L,"Spring","Bob",39.99)
+                new BookDTO(1l,"Java" ,"张三",29.99),
+                new BookDTO(2L,"Spring","李四",39.99)
         );
     }
 }

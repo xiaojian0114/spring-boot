@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width ,user-scalable, initial-scale=1.0 ,maximum-scale =1.0 ,minimum-scale = 1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel ="stylesheet" href="../css/style.css">
+
+    <title>Todo List</title>
+
+    <style>
+        body{
+            font-family: Arial,sans-serif;
+            max-width:600px;
+            margin: 0 auto;
+        }
+
+        h1{
+            color:#333;
+        }
+
+        ul{
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li{
+            margin-bottom: 10px;
+        }
+
+        .completed{
+            text-decoration: line-through;
+            color:#999;
+        }
+
+        button{
+            background-color: #1a73e8;
+            color:white;
+            border:none;
+            padding:5px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: #155ab6;
+        }
+    </style>
+</head>
+
+<body>
+<h1>待办清单</h1>
+
+<form action="/addTask" method="post">
+    <input type="text" name="name" placeholder="请输入任务名称">
+    <button type="submit">添加任务</button>
+</form>
+
+
+<ul>
+    <li th:each="task : ${tasks}">
+
+        <span th:text="${task.name}" th:classappend="${task.completed} ? 'completed'"></span>
+
+        <form action="/updateTask" method="post" style="display: inline;">
+            <input type="hidden" name="id" th:value="${task.id}">
+            <button type="submit">切换状态</button>
+        </form>
+
+        <form action="/deleteTask" method="post" style="display: inline;">
+            <input type="hidden" name="id" th:value="${task.id}">
+            <button type="submit">删除</button>
+        </form>
+    </li>
+</ul>
+
+</body>
+</html>

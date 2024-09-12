@@ -1,14 +1,16 @@
-package org.example.entity;
+package org.example.model;
 
-public class User {
-    public Long id;
+public class Task {
+    private Long id;
     private String name;
-    private Integer age;
 
-    public User(Long id, String name, Integer age) {
+    private Boolean completed;
+
+    public Task(Long id,String name){
         this.id = id;
         this.name = name;
-        this.age = age;
+        this.completed = false;
+
     }
 
     public Long getId() {
@@ -27,11 +29,11 @@ public class User {
         this.name = name;
     }
 
-    public Integer getAge() {
-        return age;
+    public Boolean getCompleted() {
+        return completed;
     }
 
-    public void setAge(Integer age) {
-        this.age = age;
+    public void setCompleted(Boolean completed) {
+        this.completed = completed;
     }
 }

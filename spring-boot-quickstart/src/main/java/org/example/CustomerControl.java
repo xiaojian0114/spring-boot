@@ -1,4 +1,4 @@
-package org.example.controller;
+package org.example;
 
 import jakarta.annotation.Resource;
 import org.example.enums.RequestType;

@@ -1,0 +1,9 @@
+logging:
+  level:
+   root: info
+   top.org.example: debug
+
+   spring:
+     thymeleaf:
+       cache: false   #禁用了 thymeleaf的缓存
+
