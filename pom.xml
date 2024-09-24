@@ -15,10 +15,13 @@
     <name>spring-boot-study</name>
     <description>spring-boot-study</description>
     <modules>
+
         <module>spring-boot-quickstart</module>
         <module>spring-boot-hymeleaf</module>
         <module>spring-boot-logging</module>
         <module>spring-boot-logging</module>
+        <module>my-zhihu-api</module>
+        <module>spring-boot-configure</module>
 
     </modules>
 
@@ -42,6 +45,8 @@
     <properties>
         <java.version>17</java.version>
     </properties>
+
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -53,6 +58,15 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+
+
     </dependencies>
 
     <build>

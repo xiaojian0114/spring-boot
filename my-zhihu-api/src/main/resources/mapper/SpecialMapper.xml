@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//myhabits.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.SpecialMapper">
+    <select id="selectAll" resultType="org.example.enity.Special">
+        SELECT *
+        FROM  list
+        ORDER BY updated DESC
+    </select>
+
+    <select id="selectByPage" resultType="org.example.enity.Special">
+        SELECT *
+        FROM  list
+        ORDER BY updated DESC
+
+        LIMIT #{limit} OFFSET #{offset}
+    </select>
+</mapper>
