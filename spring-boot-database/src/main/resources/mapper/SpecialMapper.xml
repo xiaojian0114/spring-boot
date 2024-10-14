@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.SpecialMapper">
+
+    <resultMap id="specialMap" type="special">
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="introduction" property="introduction" jdbcType="VARCHAR" />
+        <result column="banner" property="banner" jdbcType="VARCHAR" />
+        <result column="view_count" property="viewCount" jdbcType="INTEGER" />
+        <result column="followers_count" property="followersCount" jdbcType="INTEGER" />
+        <result column="is_following" property="isFollowing" jdbcType="TINYINT" />
+        <result column="updated" property="updated" jdbcType="BIGINT" />
+
+        <collection property="sections" ofType="Section">
+            <id column="section_id" property="sectionId" />
+            <result column="special_id" property="specialId" />
+            <result column="section_title" property="sectionTitle" />
+        </collection>
+    </resultMap>
+
+    <select id="findAll" resultMap="specialMap">
+        SELECT sp.* , se.*
+        FROM special sp
+             LEFT JOIN section se ON sp.id = se.special_id
+        ORDER BY sp.updated DESC
+    </select>
+</mapper>

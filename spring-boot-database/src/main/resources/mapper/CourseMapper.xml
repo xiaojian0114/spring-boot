@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.mapper.CourseMapper">
+    <resultMap id="courseMap" type="Course">
+        <id column="course_id" property="courseId" jdbcType="INTEGER"/>
+        <result column="course_name" property="courseName" jdbcType="VARCHAR"/>
+
+        <collection property="students" ofType="Student">
+            <id column="student_id" property="studentId" jdbcType="INTEGER"/>
+            <result column="student_name" property="studentName" jdbcType="VARCHAR"/>
+            <result column="hometown" property="hometown" jdbcType="VARCHAR"/>
+        </collection>
+    </resultMap>
+
+
+
+
+    <select id="selectAll" resultMap="courseMap">
+        SELECT
+        c.course_id, c.course_name, s.student_id, s.student_name, s.hometown, s.birthday
+        FROM t_course c
+        LEFT JOIN t_course_student cs ON c.course_id = cs.course_ id
+        LEFT JOIN t_student s ON cs.student_id = s.student_id
+    </select>
+
+    <select id="getCourseWithStudents" resultMap="courseMap" parameterType="int">
+        SELECT c.course_id, c.course_name,
+               s.student_id, s.student_name, s.hometown
+        FROM t_course c
+                 LEFT JOIN t_course_student cs ON c.course_id = cs.course_id
+                 LEFT JOIN t_student s ON cs.student_id = s.student_id
+        WHERE c.course_id = #{courseId}
+    </select>
+
+</mapper>
