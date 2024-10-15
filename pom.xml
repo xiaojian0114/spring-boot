@@ -24,6 +24,8 @@
         <module>spring-boot-configure</module>
         <module>spring-boot-database</module>
         <module>spring-boot-mp</module>
+        <module>spring-boot-AQ</module>
+        <module>spring-boot-exception</module>
 
     </modules>
 
