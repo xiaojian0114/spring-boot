@@ -26,6 +26,7 @@
         <module>spring-boot-mp</module>
         <module>spring-boot-AQ</module>
         <module>spring-boot-exception</module>
+        <module>spring-boot-redis</module>
 
     </modules>
 
