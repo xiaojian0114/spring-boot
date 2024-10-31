@@ -39,6 +39,6 @@ Identify and stop the process that's listening on port 8080 or configure this ap
 2024-09-12 09:56:24.990 INFO  [http-nio-8080-exec-1] org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2024-09-12 09:56:24.991 INFO  [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet : Initializing Servlet 'dispatcherServlet'
 2024-09-12 09:56:24.992 INFO  [http-nio-8080-exec-1] org.springframework.web.servlet.DispatcherServlet : Completed initialization in 0 ms
-2024-09-12 09:57:40.761 INFO  [http-nio-8080-exec-5] org.example.controller.LogController : This is a INFO log
-2024-09-12 09:57:40.761 WARN  [http-nio-8080-exec-5] org.example.controller.LogController : This is a WARN log
-2024-09-12 09:57:40.761 ERROR [http-nio-8080-exec-5] org.example.controller.LogController : This is a ERROR log
+2024-09-12 09:57:40.761 INFO  [http-nio-8080-exec-5] controller.org.example.AQ.LogController : This is a INFO log
+2024-09-12 09:57:40.761 WARN  [http-nio-8080-exec-5] controller.org.example.AQ.LogController : This is a WARN log
+2024-09-12 09:57:40.761 ERROR [http-nio-8080-exec-5] controller.org.example.AQ.LogController : This is a ERROR log

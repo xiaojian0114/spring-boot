@@ -4,7 +4,6 @@ import lombok.Data;
 import org.example.loader.YamlPropertyLoader;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
-import org.springframework.beans.factory.annotation.Value;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

@@ -1,7 +1,5 @@
 package org.example.service.impl;
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.system.UserInfo;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,7 +7,6 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.example.utils.JwtUtil;
 import org.example.vo.UserInfoVO;
 import org.springframework.beans.BeanUtils;
-import org.springframework.data.annotation.Id;
 import org.springframework.stereotype.Service;
 import org.example.cache.TokenStoreCache;
 import org.example.config.RedisCache;

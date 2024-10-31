@@ -1,7 +1,6 @@
 package org.example.util;
 
 import com.aliyun.oss.OSS;
-import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.OSSClientBuilder;
 import jakarta.annotation.Resource;
 import org.example.config.OssConfig;

@@ -3,7 +3,6 @@ package org.example.service.impl;
 
 import com.cloopen.rest.sdk.BodyType;
 import com.cloopen.rest.sdk.CCPRestSmsSDK;
-import jakarta.annotation.Resource;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.example.config.CloopenConfig;
@@ -13,7 +12,6 @@ import org.example.enums.ErrorCode;
 import org.example.exception.ServerException;
 import org.example.service.SmsService;
 import org.example.utils.CommonUtils;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;

@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
-public class UserController {
+
+@RestController
+public class UsersController {
 
     // 模拟的用户数据
     private List<User> users = new ArrayList<>();

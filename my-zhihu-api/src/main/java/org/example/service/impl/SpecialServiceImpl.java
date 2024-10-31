@@ -1,7 +1,6 @@
 package org.example.service.impl;
 
 import jakarta.annotation.Resource;
-import org.apache.commons.logging.Log;
 import org.example.enity.Special;
 import org.example.mapper.SpecialMapper;
 import org.example.service.SpecialService;

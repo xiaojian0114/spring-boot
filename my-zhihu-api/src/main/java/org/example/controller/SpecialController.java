@@ -10,8 +10,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.apache.ibatis.ognl.DynamicSubscript.all;
-
 @RestController
 @CrossOrigin
 @RequestMapping("/api/v1/special")

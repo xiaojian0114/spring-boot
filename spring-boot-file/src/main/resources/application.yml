@@ -1,0 +1,16 @@
+file:
+  upload-path: /C:/Users/18361/Desktop/upload
+
+spring:
+  web:
+    resources:
+      static-locations: classpath:/static/,file:${file.upload-path}
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 100MB
+minio:
+  endPoint: http://43.137.12.232:9000
+  accessKey: admin
+  secretKey: admin123
