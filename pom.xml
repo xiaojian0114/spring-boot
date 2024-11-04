@@ -31,6 +31,7 @@
 
         <module>spring-boot-task</module>
         <module>spring-boot-file</module>
+        <module>spring-boot-filter-interceptor</module>
 
     </modules>
 

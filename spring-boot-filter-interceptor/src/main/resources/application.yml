@@ -1,0 +1,11 @@
+#logging:
+# pattern:
+#  console: "%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n"
+#  file: "%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n"
+
+aliyun:
+ oss:
+  endpoint: https://oss-cn-shanghai.aliyuncs.com
+  accessKeyId: LTAI5tNqfk8cBHBytbXsxfii
+  accessKeySecret: nBeyX4BneYjD6warV7dQ2EHQNb28kM
+  bucketName: my-bucket-wyj
