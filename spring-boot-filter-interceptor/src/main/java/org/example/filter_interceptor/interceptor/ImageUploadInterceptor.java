@@ -3,7 +3,6 @@ package org.example.filter_interceptor.interceptor;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,13 +10,17 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.UUID;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.model.PutObjectRequest;
+import org.springframework.mock.web.MockMultipartFile;
 
 @Component
 @Slf4j
@@ -35,9 +38,11 @@ public class ImageUploadInterceptor implements HandlerInterceptor {
     @Value("${aliyun.oss.bucketName}")
     private String bucketName;
 
+    // 文件大小限制
     private static final long MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
     private static final int MAX_WIDTH = 1920; // 最大宽度
     private static final int MAX_HEIGHT = 1080; // 最大高度
+    // 可上传类型
     private static final String[] ALLOWED_TYPES = {"image/png", "image/jpeg", "image/gif"};
 
     @Override
@@ -69,9 +74,19 @@ public class ImageUploadInterceptor implements HandlerInterceptor {
                     return false;
                 }
 
-                // 上传到阿里云 OSS
-                String objectName = file.getOriginalFilename();
-                uploadFileToOSS(objectName, file);
+                // 添加水印
+                String watermarkText = "ys666"; // 可以自定义水印内容
+                BufferedImage watermarkedImage = addWatermark(img, watermarkText);
+
+                // 创建新的 MultipartFile
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(watermarkedImage, "png", baos);
+                byte[] bytes = baos.toByteArray();
+                MultipartFile newFile = new MockMultipartFile("file", file.getOriginalFilename(), "image/png", bytes);
+
+                // 生成唯一的文件名
+                String objectName = generateUniqueFileName(file.getOriginalFilename());
+                uploadFileToOSS(objectName, newFile);
             }
         }
 
@@ -98,7 +113,6 @@ public class ImageUploadInterceptor implements HandlerInterceptor {
         };
     }
 
-
     private void uploadFileToOSS(String objectName, MultipartFile file) throws IOException {
         OSS ossClient = new OSSClientBuilder().build(endpoint, accessKeyId, accessKeySecret);
         try {
@@ -111,5 +125,32 @@ public class ImageUploadInterceptor implements HandlerInterceptor {
         } finally {
             ossClient.shutdown();
         }
+    }
+
+    private BufferedImage addWatermark(BufferedImage originalImage, String watermarkText) {
+        int width = originalImage.getWidth();
+        int height = originalImage.getHeight();
+        BufferedImage watermarked = new BufferedImage(width, height, originalImage.getType());
+
+        Graphics2D g = (Graphics2D) watermarked.getGraphics();
+        g.drawImage(originalImage, 0, 0, null);
+
+        // 设置水印的透明度和字体
+        g.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
+        g.setFont(new Font("Arial", Font.BOLD, 30));
+        g.setColor(Color.RED);
+        g.drawString(watermarkText, width / 5, height / 2); // 在中心位置绘制水印
+
+        g.dispose();
+        return watermarked;
+    }
+
+    private String generateUniqueFileName(String originalFilename) {
+        // 获取文件扩展名
+        String extension = originalFilename.substring(originalFilename.lastIndexOf('.'));
+        // 生成唯一标识符
+        String uniqueId = UUID.randomUUID().toString();
+        // 返回唯一文件名
+        return uniqueId + extension;
     }
 }
